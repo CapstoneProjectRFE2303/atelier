@@ -31,12 +31,10 @@ module.exports = {
   plugins: [isDevelopment && new ReactRefreshWebpackPlugin()].filter(Boolean),
   devServer: {
     hot: true,
-    webSocketServer: 'ws',
-    proxy: {
-      '**': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-      },
+    static: {
+      directory: path.join(__dirname, 'client/dist'),
+      publicPath: '/',
     },
+    historyApiFallback: true,
   },
 };
