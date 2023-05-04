@@ -1,10 +1,13 @@
 import React from 'react';
+import StyleSelector from './StyleSelector.jsx';
 
 const App = () => {
   return (
     <div>
-      <p>Hello, World!</p>
+      <StyleSelector />
+
     </div>
+
   );
 };
 
