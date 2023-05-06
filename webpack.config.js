@@ -1,6 +1,13 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
+const webpack = require('webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const path = require('path');
+
+const env = dotenv.config().parsed;
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -28,7 +35,10 @@ module.exports = {
       },
     ],
   },
-  plugins: [isDevelopment && new ReactRefreshWebpackPlugin()].filter(Boolean),
+  plugins: [
+    isDevelopment && new ReactRefreshWebpackPlugin(),
+    new webpack.DefinePlugin(envKeys),
+  ].filter(Boolean),
   devServer: {
     hot: true,
     static: {
