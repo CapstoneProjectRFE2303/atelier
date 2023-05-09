@@ -13,7 +13,7 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   mode: isDevelopment ? 'development' : 'production',
-  entry: path.join(__dirname, '/client/src/index.jsx'),
+  entry: [path.join(__dirname, '/client/src/index.jsx'), path.join(__dirname, '/client/src/styles/main.scss')],
   output: {
     path: path.join(__dirname, '/client/dist'),
     filename: 'bundle.js',
@@ -33,6 +33,14 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      }
     ],
   },
   plugins: [
