@@ -79,3 +79,9 @@ To run this project, please follow these steps:
    ```
 
 5. Open a browser and navigate to <http://localhost:1234> to view the running project
+
+6. Optionally run the project's `jest` test suite using `npm test`
+
+   ```shell
+   npm test
+   ```
