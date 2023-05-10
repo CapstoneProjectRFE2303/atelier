@@ -1,5 +1,8 @@
 # Atelier
 
+---
+[![build](https://github.com/CapstoneProjectRFE2303/atelier/actions/workflows/pr-testing.yml/badge.svg)](https://github.com/CapstoneProjectRFE2303/atelier/actions/workflows/pr-testing.yml)
+
 Atelier is a retail website project for Hack Reactor's "Front End Capstone".
 
 ## Table of Contents
