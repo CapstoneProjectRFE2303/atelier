@@ -60,10 +60,22 @@ To run this project, please follow these steps:
    npm install
    ```
 
-4. Run the client/frontend using `npm run client-dev` in the root of the project directory
+4. Either run both the client/server together with `npm start`
+
+   ```shell
+   npm start
+   ```
+
+   or run the client/frontend using `npm run client-dev`
 
    ```shell
    npm run client-dev
    ```
 
-5. Open a browser and navigate to <http://localhost:8080> to view the running project
+   and run the server/backend using `npm run server-dev`
+
+   ```shell
+   npm run server-dev
+   ```
+
+5. Open a browser and navigate to <http://localhost:1234> to view the running project
