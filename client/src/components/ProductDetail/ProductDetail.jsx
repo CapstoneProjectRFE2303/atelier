@@ -1,13 +1,31 @@
-import React, { useEffect, useRef } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useRef } from 'react';
+import { useParams } from 'react-router-dom';
 
-import ProductOverview from './ProductOverview/ProductOverview.jsx';
-import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
-import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
-import RelatedItemsAndOutfitCreation from './RelatedItemsAndOutfitCreation/RelatedItemsAndOutfitCreation.jsx';
+import ProductOverview from './ProductOverview/ProductOverview';
+import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers';
+import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews';
+import RelatedItemsAndOutfitCreation from './RelatedItemsAndOutfitCreation/RelatedItemsAndOutfitCreation';
 
-const ProductDetail = () => {
-  const location = useLocation();
+export const renderSection = (pathname) => {
+  const match = pathname.match(/\/products\/\d+\/(.+)/);
+
+  if (match) {
+    const section = match[1];
+
+    switch (section) {
+      case 'questions-and-answers':
+        return 'questions-and-answers';
+      case 'ratings-and-reviews':
+        return 'ratings-and-reviews';
+      case 'related-items-and-outfit-creation':
+        return 'related-items-and-outfit-creation';
+    }
+  }
+
+  return 'product-overview';
+};
+
+export const ProductDetail = () => {
   const { productId } = useParams();
 
   const productOverviewRef = useRef(null);
@@ -22,49 +40,8 @@ const ProductDetail = () => {
     ref.current.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const renderSection = () => {
-    const { pathname } = location;
-    const match = pathname.match(/\/products\/\d+\/(.+)/);
-
-    if (match) {
-      const section = match[1];
-
-      switch (section) {
-        case 'questions-and-answers':
-          return 'questions-and-answers';
-        case 'ratings-and-reviews':
-          return 'ratings-and-reviews';
-        case 'related-items-and-outfit-creation':
-          return 'related-items-and-outfit-creation';
-        default:
-          return 'product-overview';
-      }
-    }
-
-    return 'product-overview';
-  };
-
-  useEffect(() => {
-    switch (renderSection()) {
-      case 'questions-and-answers':
-        questionsAndAnswersRef.current.scrollIntoView({ behavior: 'smooth' });
-        break;
-      case 'ratings-and-reviews':
-        ratingsAndReviewsRef.current.scrollIntoView({ behavior: 'smooth' });
-        break;
-      case 'related-items-and-outfit-creation':
-        relatedItemsAndOutfitCreationRef.current.scrollIntoView({
-          behavior: 'smooth',
-        });
-        break;
-      default:
-        productOverviewRef.current.scrollIntoView({ behavior: 'smooth' });
-        break;
-    }
-  }, []);
-
   return (
-    <>
+    <div data-testid='product-detail'>
       <nav>
         <ul>
           <li>
@@ -120,8 +97,6 @@ const ProductDetail = () => {
           <RelatedItemsAndOutfitCreation />
         </div>
       </div>
-    </>
+    </div>
   );
 };
-
-export default ProductDetail;

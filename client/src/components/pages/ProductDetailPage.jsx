@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import ProductDetail from '../ProductDetail/ProductDetail';
+import { ProductDetail } from '../ProductDetail/ProductDetail';
 
 export const ProductDetailPage = () => {
   return (
