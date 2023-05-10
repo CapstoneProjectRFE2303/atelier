@@ -1,10 +1,9 @@
-import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
-import HomePage from './pages/HomePage.jsx';
-import ProductDetailPage from './pages/ProductDetailPage.jsx';
+import { HomePage } from './pages/HomePage';
+import { ProductDetailPage } from './pages/ProductDetailPage';
 
-const App = () => {
+export const App = () => {
   return (
     <div>
       <Router>
@@ -19,5 +18,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;

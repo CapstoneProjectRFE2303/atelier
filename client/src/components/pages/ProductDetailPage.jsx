@@ -1,9 +1,7 @@
-import React from 'react';
-
 import { NavLink } from 'react-router-dom';
-import ProductDetail from '../ProductDetail/ProductDetail.jsx';
+import ProductDetail from '../ProductDetail/ProductDetail';
 
-const ProductDetailPage = () => {
+export const ProductDetailPage = () => {
   return (
     <div>
       <nav>
@@ -14,5 +12,3 @@ const ProductDetailPage = () => {
     </div>
   );
 };
-
-export default ProductDetailPage;
