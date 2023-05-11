@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-export const HomePage = () => {
+export const HomePage: FC = () => {
   return (
     <div>
       <h1>Welcome to the Home Page!</h1>

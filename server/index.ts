@@ -1,7 +1,9 @@
-require('dotenv').config();
-const express = require('express');
-const path = require('path');
-const { createProxyMiddleware } = require('http-proxy-middleware');
+import dotenv from 'dotenv';
+import express from 'express';
+import { createProxyMiddleware } from 'http-proxy-middleware';
+import path from 'path';
+
+dotenv.config();
 
 const app = express();
 
@@ -10,7 +12,7 @@ app.use(express.static(path.join(__dirname, '../dist')));
 app.use('/api', createProxyMiddleware({
   target: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe',
   headers: {
-    Authorization: process.env.GITHUB_ATELIER_API_KEY,
+    Authorization: process.env.GITHUB_ATELIER_API_KEY || '',
   },
   changeOrigin: true,
   pathRewrite: {

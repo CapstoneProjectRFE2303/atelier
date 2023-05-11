@@ -1,9 +1,9 @@
-import React from 'react';
+import { FC } from 'react';
 
-const RatingsAndReviews = () => {
+export const ProductOverview: FC = () => {
   return (
     <div>
-      <h1>RatingsAndReviews</h1>
+      <h1>ProductOverview</h1>
 
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
@@ -38,5 +38,3 @@ const RatingsAndReviews = () => {
     </div>
   );
 };
-
-export default RatingsAndReviews;

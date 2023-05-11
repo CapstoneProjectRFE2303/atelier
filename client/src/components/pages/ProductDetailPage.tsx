@@ -1,7 +1,9 @@
+import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
+
 import { ProductDetail } from '../ProductDetail/ProductDetail';
 
-export const ProductDetailPage = () => {
+export const ProductDetailPage: FC = () => {
   return (
     <div>
       <nav>
