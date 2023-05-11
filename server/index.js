@@ -1,28 +1,29 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const httpProxy = require('http-proxy');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../dist')));
 
-const port = process.env.PORT || 3000;
+app.use('/api', createProxyMiddleware({
+  target: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe',
+  headers: {
+    Authorization: process.env.GITHUB_ATELIER_API_KEY,
+  },
+  changeOrigin: true,
+  pathRewrite: {
+    '^/api': '',
+  },
+}));
 
-const proxy = httpProxy.createProxyServer();
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist', 'index.html'));
+});
 
-const devServerProxy = (request, response, next) => {
-  if (request.url.startsWith('/client/dist/')) {
-    proxy.web(request, response, {
-      target: 'http://localhost:8080',
-    });
-  } else {
-    next();
-  }
-};
+const port = 3000;
 
-app.use(devServerProxy);
-
-app.listen(port);
-
-console.log(`Listening at http://localhost:${port}`);
+app.listen(port, () => {
+  console.log(`Listening at http://localhost:${port}`);
+});
