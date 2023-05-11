@@ -1,9 +1,9 @@
-import React from 'react';
+import { FC } from 'react';
 
-const ProductOverview = () => {
+export const RatingsAndReviews: FC = () => {
   return (
     <div>
-      <h1>ProductOverview</h1>
+      <h1>RatingsAndReviews</h1>
 
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
@@ -38,5 +38,3 @@ const ProductOverview = () => {
     </div>
   );
 };
-
-export default ProductOverview;

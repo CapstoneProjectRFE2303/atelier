@@ -1,6 +1,6 @@
-import React from 'react';
+import { FC } from 'react';
 
-const QuestionsAndAnswers = () => {
+export const QuestionsAndAnswers: FC = () => {
   return (
     <div>
       <h1>QuestionsAndAnswers</h1>
@@ -38,5 +38,3 @@ const QuestionsAndAnswers = () => {
     </div>
   );
 };
-
-export default QuestionsAndAnswers;

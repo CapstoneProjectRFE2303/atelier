@@ -1,6 +1,6 @@
-import React from 'react';
+import { FC } from 'react';
 
-const RelatedItemsAndOutfitCreation = () => {
+export const RelatedItemsAndOutfitCreation: FC = () => {
   return (
     <div>
       <h1>RelatedItemsAndOutfitCreation</h1>
@@ -38,5 +38,3 @@ const RelatedItemsAndOutfitCreation = () => {
     </div>
   );
 };
-
-export default RelatedItemsAndOutfitCreation;

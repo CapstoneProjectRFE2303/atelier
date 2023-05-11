@@ -5,9 +5,14 @@ import { App } from './components/App';
 import './styles/main.scss';
 
 const container = document.getElementById('root');
-const root = createRoot(container);
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+
+if (container) {
+  const root = createRoot(container);
+  root.render(
+    <StrictMode>
+      <App />
+    </StrictMode>
+  );
+} else {
+  console.error('Container element not found.');
+}
