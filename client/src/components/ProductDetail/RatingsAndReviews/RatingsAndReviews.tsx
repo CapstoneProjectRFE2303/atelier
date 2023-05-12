@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 export const RatingsAndReviews: FC = () => {
   return (
-    <div>
+    <div data-testid='ratings-and-reviews'>
       <h1>RatingsAndReviews</h1>
 
       <p>

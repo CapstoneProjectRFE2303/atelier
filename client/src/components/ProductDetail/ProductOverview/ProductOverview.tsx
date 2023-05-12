@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 export const ProductOverview: FC = () => {
   return (
-    <div>
+    <div data-testid='product-overview'>
       <h1>ProductOverview</h1>
 
       <p>
