@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 export const RelatedItemsAndOutfitCreation: FC = () => {
   return (
-    <div>
+    <div data-testid='related-items-and-outfit-creation'>
       <h1>RelatedItemsAndOutfitCreation</h1>
 
       <p>
