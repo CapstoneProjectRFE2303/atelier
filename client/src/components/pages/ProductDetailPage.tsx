@@ -1,29 +1,36 @@
-import { FC, useContext, useEffect } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { FC, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { ProductContext } from '../context/ProductContext';
-import { ProductDetail } from '../ProductDetail/ProductDetail';
+import { useGetProductDetailsQuery } from '../../api/api';
+import { useAppDispatch } from '../../app/hooks';
+import { ProductDetail } from '../../features/productDetail/ProductDetail';
+import { setSelectedProductId } from '../../features/productDetail/productDetailSlice';
 
 export const ProductDetailPage: FC = () => {
-  const { productId } = useParams<{ productId: string; }>();
-  const { selectedProduct, updateSelectedProduct } = useContext(ProductContext);
+  const { productId } = useParams<{ productId: string }>();
+  const dispatch = useAppDispatch();
+  const { data: selectedProduct, isLoading } = useGetProductDetailsQuery(Number(productId));
 
   useEffect(() => {
-    if (!productId || !updateSelectedProduct) {
-      return;
+    if (productId) {
+      dispatch(setSelectedProductId(Number(productId)));
     }
-
-    updateSelectedProduct(productId);
-  }, [productId]);
+  }, [productId, dispatch]);
 
   return (
     <div>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <hr></hr>
-      </nav>
-      {selectedProduct && (
-        <ProductDetail />
+      { isLoading ? (
+        <div>Loading...</div>
+      ) : selectedProduct ? (
+        <>
+          <nav>
+            <a href="/">Home</a>
+            <hr></hr>
+          </nav>
+          <ProductDetail />
+        </>
+      ) : (
+        <div>Product not found</div>
       )}
     </div>
   );
