@@ -7,13 +7,13 @@ export const HomePage: FC = () => {
       <h1>Welcome to the Home Page!</h1>
       <ul>
         <li>
-          <Link to='/products/1'>Product 1</Link>
+          <Link to='/products/37311'>Product 1</Link>
         </li>
         <li>
-          <Link to='/products/2'>Product 2</Link>
+          <Link to='/products/37312'>Product 2</Link>
         </li>
         <li>
-          <Link to='/products/3'>Product 3</Link>
+          <Link to='/products/37313'>Product 3</Link>
         </li>
       </ul>
     </div>

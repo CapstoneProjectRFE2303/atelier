@@ -3,7 +3,7 @@ import { FC } from 'react';
 export const RelatedItemsAndOutfitCreation: FC = () => {
   return (
     <div data-testid='related-items-and-outfit-creation'>
-      <h1>RelatedItemsAndOutfitCreation</h1>
+      <h2>RelatedItemsAndOutfitCreation</h2>
 
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
